@@ -1,0 +1,76 @@
+<head>
+    <style>
+        /* Container table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Table header */
+        table th {
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        /* Table rows */
+        table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        /* Hover effect for table rows */
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Alternating row colors */
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        /* Responsive table */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            table th, table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<table>
+    <thead>
+    <tr>
+        <th>Tên</th>
+        <th>Email</th>
+        <th>Số điện thoại</th>
+        <th>Trình độ</th>
+        <th>Kỹ năng</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="applicant : ${applicants}">
+        <td th:text="${applicant.name}"></td>
+        <td th:text="${applicant.email}"></td>
+        <td th:text="${applicant.phone}"></td>
+        <td th:text="${applicant.education}"></td>
+        <td th:text="${applicant.skillsExperience}"></td>
+    </tr>
+    </tbody>
+</table>

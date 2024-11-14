@@ -1,0 +1,92 @@
+<head>
+    <style>
+        /* Container table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Table header */
+        table th {
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        /* Table rows */
+        table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        /* Hover effect for table rows */
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Alternating row colors */
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #fff;
+        }
+
+        /* Action link style */
+        table td a {
+            color: #dc3545;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        table td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive table */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            table th, table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<!-- Nút "Thêm công việc" -->
+<button class="btn-add-job" onclick="window.location.href='/jobposts/create'">Thêm công việc</button>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Tựa đề</th>
+        <th>Mô tả</th>
+        <th>Lợi ích</th>
+        <th>Lương</th>
+        <th>Địa điểm</th>
+        <th>Hành động</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="jobPost : ${jobPosts}">
+        <td th:text="${jobPost.title}"></td>
+        <td th:text="${jobPost.description}"></td>
+        <td th:text="${jobPost.benefits}"></td>
+        <td th:text="${jobPost.salary}"></td>
+        <td th:text="${jobPost.location}"></td>
+        <td><a th:href="@{/jobposts/delete/{id}(id=${jobPost.id})}">Xóa</a></td>
+    </tr>
+    </tbody>
+</table>

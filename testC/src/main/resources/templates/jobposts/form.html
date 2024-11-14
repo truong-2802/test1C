@@ -1,0 +1,70 @@
+<form action="/jobposts" method="POST">
+    <style>
+        /* CSS cho form */
+        form {
+            width: 100%;
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #333;
+        }
+        form input[type="text"],
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        form input[type="text"]:focus,
+        form textarea:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        form button:hover {
+            background-color: #218838;
+        }
+    </style>
+
+    <!-- Nếu công việc đã có ID, gắn lại ID vào form để cập nhật -->
+    <input type="hidden" name="id" th:value="${jobPost.id}">
+
+    <label for="title">Tựa đề</label>
+    <input type="text" name="title" id="title" th:value="${jobPost.title}" required>
+
+    <label for="description">Mô tả công việc</label>
+    <textarea name="description" id="description" required th:text="${jobPost.description}"></textarea>
+
+    <label for="benefits">Lợi ích</label>
+    <textarea name="benefits" id="benefits" required th:text="${jobPost.benefits}"></textarea>
+
+    <label for="salary">Mức lương</label>
+    <input type="text" name="salary" id="salary" required th:value="${jobPost.salary}">
+
+    <label for="location">Địa điểm làm việc</label>
+    <input type="text" name="location" id="location" required th:value="${jobPost.location}">
+
+    <button type="submit">Lưu công việc</button>
+</form>
